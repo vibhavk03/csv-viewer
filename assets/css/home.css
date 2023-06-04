@@ -54,3 +54,27 @@ ul {
 .wd-1000 {
   width: 1000px !important;
 }
+
+/* header */
+header {
+  justify-content: space-between;
+  background-color: black;
+  padding: 10px 10px;
+  min-width: 500px;
+}
+header a {
+  color: white;
+}
+
+/* footer */
+#container {
+  min-height: 100vh;
+  flex-direction: column;
+  display: flex;
+}
+footer {
+  justify-content: flex-end;
+  padding: 5px 15px;
+  background-color: black;
+  margin-top: auto;
+}
