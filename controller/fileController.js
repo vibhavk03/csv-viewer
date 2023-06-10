@@ -29,6 +29,20 @@ module.exports = {
       });
     res.redirect('back');
   },
+  view: async function (req, res) {
+    try {
+      const file = await CSV.findById(req.params.id);
+      const headers = Object.keys(file.data[0]);
+      res.render('fileView', {
+        length: headers.length,
+        headers,
+        file,
+      });
+    } catch (error) {
+      console.log(`Error in fetching file from db : ${error}`);
+      res.redirect('back');
+    }
+  },
   delete: async function (req, res) {
     /* delete db record */
     try {

@@ -7,6 +7,7 @@ const upload = multer({ dest: 'uploads/' });
 const fileController = require('../controller/fileController');
 
 router.post('/upload', upload.single('uploaded_file'), fileController.upload);
+router.get('/view/:id', fileController.view);
 router.post('/delete/:id', fileController.delete);
 
 module.exports = router;
