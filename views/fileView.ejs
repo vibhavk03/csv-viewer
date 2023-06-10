@@ -29,7 +29,11 @@
               <thead>
                 <tr>
                   <% for (head of headers) { %>
-                  <th><%= head %></th>
+                  <th>
+                    <div class="flex view-file-header">
+                      <%= head %> <i class="fa-solid fa-sort"></i>
+                    </div>
+                  </th>
                   <% } %>
                 </tr>
               </thead>
@@ -49,6 +53,11 @@
       </main>
 
       <%- include('_footer') %>
+
+      <script
+        src="https://kit.fontawesome.com/5e6e3315b0.js"
+        crossorigin="anonymous"
+      ></script>
     </div>
   </body>
 </html>

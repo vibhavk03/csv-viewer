@@ -165,3 +165,6 @@ table thead tr {
 #uploaded-file-heading {
   padding: 20px;
 }
+.view-file-header {
+  gap: 5px;
+}
