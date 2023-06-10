@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %> 🔎</title>
+    <title>CSV Viewer 🔎</title>
     <link rel="stylesheet" href="/css/home.css" />
   </head>
   <body>
@@ -51,113 +51,55 @@
             <h3>Uploaded Files</h3>
           </div>
 
+          <!-- table displays uploaded files -->
           <div id="table-wrapper">
             <table>
               <thead>
                 <tr>
                   <th>Name</th>
                   <th>Date</th>
-                  <th>Time (UTC)</th>
+                  <th>Time</th>
                   <th>View</th>
                   <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
+                <% for (file of files) { %>
                 <tr>
-                  <td>test_file_1.csv</td>
-                  <td>12/05/2023</td>
-                  <td>14:50:12</td>
+                  <td><%= file.originalFileName %></td>
+                  <td><%= file.createdAt.toLocaleDateString() %></td>
+                  <td><%= file.createdAt.toLocaleTimeString() %></td>
                   <td>
-                    <button
-                      id="view-file-btn"
-                      type="submit"
-                      class="primary-btn secondary-btn"
+                    <form
+                      action="/file/view/<%= file._id %>"
+                      method="get"
+                      class=""
                     >
-                      View File
-                    </button>
+                      <button
+                        id="view-file-btn"
+                        type="submit"
+                        class="primary-btn secondary-btn"
+                      >
+                        View File
+                      </button>
+                    </form>
                   </td>
                   <td>
-                    <button id="delete-file-btn" class="primary-btn delete-btn">
-                      Delete
-                    </button>
+                    <form
+                      action="/file/delete/<%= file._id %>"
+                      method="post"
+                      class=""
+                    >
+                      <button
+                        id="delete-file-btn"
+                        class="primary-btn delete-btn"
+                      >
+                        Delete
+                      </button>
+                    </form>
                   </td>
                 </tr>
-                <tr>
-                  <td>test_file_1.csv</td>
-                  <td>12/05/2023</td>
-                  <td>14:50:12</td>
-                  <td>
-                    <button
-                      id="view-file-btn"
-                      type="submit"
-                      class="primary-btn secondary-btn"
-                    >
-                      View File
-                    </button>
-                  </td>
-                  <td>
-                    <button id="delete-file-btn" class="primary-btn delete-btn">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>test_file_1.csv</td>
-                  <td>12/05/2023</td>
-                  <td>14:50:12</td>
-                  <td>
-                    <button
-                      id="view-file-btn"
-                      type="submit"
-                      class="primary-btn secondary-btn"
-                    >
-                      View File
-                    </button>
-                  </td>
-                  <td>
-                    <button id="delete-file-btn" class="primary-btn delete-btn">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>test_file_1.csv</td>
-                  <td>12/05/2023</td>
-                  <td>14:50:12</td>
-                  <td>
-                    <button
-                      id="view-file-btn"
-                      type="submit"
-                      class="primary-btn secondary-btn"
-                    >
-                      View File
-                    </button>
-                  </td>
-                  <td>
-                    <button id="delete-file-btn" class="primary-btn delete-btn">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>test_file_1.csv</td>
-                  <td>12/05/2023</td>
-                  <td>14:50:12</td>
-                  <td>
-                    <button
-                      id="view-file-btn"
-                      type="submit"
-                      class="primary-btn secondary-btn"
-                    >
-                      View File
-                    </button>
-                  </td>
-                  <td>
-                    <button id="delete-file-btn" class="primary-btn delete-btn">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
+                <% } %>
               </tbody>
             </table>
           </div>
