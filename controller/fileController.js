@@ -5,17 +5,28 @@ const CSV = require('../models/CSV');
 module.exports = {
   upload: async function (req, res) {
     const results = [];
+    /* reading and parsing uploaded csv file */
     fs.createReadStream(req.file.path)
       .pipe(csvParser())
       .on('data', (data) => results.push(data))
       .on('end', async () => {
-        await CSV.create({
-          originalFileName: req.file.originalname,
-          uniqueFileName: req.file.filename,
-          data: results,
+        /* create a db record */
+        try {
+          await CSV.create({
+            originalFileName: req.file.originalname,
+            uniqueFileName: req.file.filename,
+            data: results,
+          });
+        } catch (error) {
+          console.log(`Error in saving file to db : ${error}`);
+        }
+        /* delete file from uploads folder after db operation */
+        fs.unlink(req.file.path, function (err) {
+          if (err) {
+            console.log(`Error in deleteing file: ${err}`);
+          }
         });
       });
-    // delete file from uploads folder after successful insertion in db
     res.redirect('back');
   },
 };
