@@ -29,4 +29,13 @@ module.exports = {
       });
     res.redirect('back');
   },
+  delete: async function (req, res) {
+    /* delete db record */
+    try {
+      await CSV.deleteOne({ _id: req.params.id });
+    } catch (error) {
+      console.log(`Error deleting file from db : ${error}`);
+    }
+    res.redirect('back');
+  },
 };
