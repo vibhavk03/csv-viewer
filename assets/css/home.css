@@ -168,3 +168,7 @@ table thead tr {
 .view-file-header {
   gap: 5px;
 }
+
+.th-clicked {
+  background-color: rgba(0, 0, 0, 0.3);
+}

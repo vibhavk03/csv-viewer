@@ -25,13 +25,16 @@
 
           <!-- table displays file data -->
           <div id="table-wrapper">
-            <table>
+            <table class="sortable-table" id="file-view-table">
               <thead>
                 <tr>
-                  <% for (head of headers) { %>
-                  <th>
+                  <% for (let i = 0; i < headers.length; i++) { %>
+                  <th onclick="sortTable('<%= i %>')">
                     <div class="flex view-file-header">
-                      <%= head %> <i class="fa-solid fa-sort"></i>
+                      <%= headers[i] %>
+                      <div class="asc-desc-icon">
+                        <i class="fa-solid fa-sort"></i>
+                      </div>
                     </div>
                   </th>
                   <% } %>
@@ -54,6 +57,7 @@
 
       <%- include('_footer') %>
 
+      <script src="/js/sortTable.js"></script>
       <script
         src="https://kit.fontawesome.com/5e6e3315b0.js"
         crossorigin="anonymous"
