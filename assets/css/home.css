@@ -168,7 +168,16 @@ table thead tr {
 .view-file-header {
   gap: 5px;
 }
-
 .th-clicked {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+#search-table-box-div {
+  width: 40vw;
+  margin-bottom: 25px;
+}
+#search-table-box {
+  width: 100%;
+  padding: 6px;
+  border-radius: 5px;
 }

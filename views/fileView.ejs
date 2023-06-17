@@ -23,6 +23,14 @@
             <h3><%= file.originalFileName %></h3>
           </div>
 
+          <div id="search-table-box-div" class="center-text">
+            <input
+              type="search"
+              id="search-table-box"
+              placeholder="search table content here ..."
+            />
+          </div>
+
           <!-- table displays file data -->
           <div id="table-wrapper">
             <table class="sortable-table" id="file-view-table">
@@ -57,7 +65,7 @@
 
       <%- include('_footer') %>
 
-      <script src="/js/sortTable.js"></script>
+      <script src="/js/fileView.js"></script>
       <script
         src="https://kit.fontawesome.com/5e6e3315b0.js"
         crossorigin="anonymous"
