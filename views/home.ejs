@@ -53,6 +53,11 @@
 
           <!-- table displays uploaded files -->
           <div id="table-wrapper">
+            <% if (files.length === 0) { %>
+            <div id="no-files-uploaded" class="flex">
+              <h3>No Files uploaded yet!</h3>
+            </div>
+            <% } else { %>
             <table>
               <thead>
                 <tr>
@@ -102,6 +107,7 @@
                 <% } %>
               </tbody>
             </table>
+            <% } %>
           </div>
         </div>
       </main>

@@ -160,6 +160,14 @@ table tr:nth-child(even) {
 table thead tr {
   background-color: rgba(0, 0, 0, 0.1);
 }
+#no-files-uploaded {
+  height: 20vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  justify-content: center;
+  width: 50%;
+  margin: auto;
+}
 
 /* file view page */
 #uploaded-file-heading {
@@ -171,7 +179,6 @@ table thead tr {
 .th-clicked {
   background-color: rgba(0, 0, 0, 0.3);
 }
-
 #search-table-box-div {
   width: 40vw;
   margin-bottom: 25px;
