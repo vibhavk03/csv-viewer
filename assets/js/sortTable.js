@@ -1,3 +1,4 @@
+/* n is the column index */
 function sortTable(n) {
   let table,
     rows,
@@ -10,12 +11,22 @@ function sortTable(n) {
     switchcount = 0;
   table = document.getElementById('file-view-table');
   switching = true;
-  /* Set the sorting direction to ascending */
-  dir = 'asc';
   rows = table.rows;
+  /* get the clicked table header */
+  let clickedTH = rows[0].getElementsByTagName('TH')[n];
+  /* Set the sorting direction */
+  if (clickedTH.classList.contains('sort-asc')) {
+    dir = 'asc';
+  } else {
+    dir = 'desc';
+  }
   /* remove th-clicked class if present in any column and reset the direction icon */
   for (let a = 0; a < rows[0].children.length; a++) {
     let colm = rows[0].getElementsByTagName('TH')[a];
+    if (a !== n) {
+      /* for every column other than clicked column add sort-asc class */
+      colm.classList.add('sort-asc');
+    }
     colm.classList.remove('th-clicked');
     let dirIconDiv = colm.children[0].children[0];
     dirIconDiv.innerHTML = '';
@@ -58,28 +69,23 @@ function sortTable(n) {
       switching = true;
       /* Each time a switch is done, increase this count by 1: */
       switchcount++;
-    } else {
-      /* If no switching has been done AND the direction is "asc",
-        set the direction to "desc" and run the while loop again. */
-      if (switchcount == 0 && dir == 'asc') {
-        dir = 'desc';
-        switching = true;
-      }
     }
   }
-  /* get the clicked table header */
-  let clickedTH = rows[0].getElementsByTagName('TH')[n];
-  /* adding class list to change background colour */
+  /* adding class to table header to change background colour */
   clickedTH.classList.add('th-clicked');
   /* changing icon based on the direction in which table is sorted */
   let dirIconDiv = document.querySelector('.th-clicked .asc-desc-icon');
   if (dir === 'asc') {
-    /* add icon to show table sorted in asc direction */
-    dirIconDiv.innerHTML = '';
-    dirIconDiv.innerHTML = '<i class="fa-solid fa-sort-up"></i>';
-  } else {
-    /* add icon to show table sorted in desc direction */
+    /* remove sort-asc class so next time it sorts in desc direction */
+    clickedTH.classList.remove('sort-asc');
+    /* add icon to show table will sort in desc direction now */
     dirIconDiv.innerHTML = '';
     dirIconDiv.innerHTML = '<i class="fa-solid fa-sort-down"></i>';
+  } else {
+    /* add sort-asc class so next time it sorts in asc direction */
+    clickedTH.classList.add('sort-asc');
+    /* add icon to show table will sort in asc direction now */
+    dirIconDiv.innerHTML = '';
+    dirIconDiv.innerHTML = '<i class="fa-solid fa-sort-up"></i>';
   }
 }

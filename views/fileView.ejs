@@ -29,7 +29,7 @@
               <thead>
                 <tr>
                   <% for (let i = 0; i < headers.length; i++) { %>
-                  <th onclick="sortTable('<%= i %>')">
+                  <th onclick="sortTable('<%= i %>')" class="sort-asc">
                     <div class="flex view-file-header">
                       <%= headers[i] %>
                       <div class="asc-desc-icon">
