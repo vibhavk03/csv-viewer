@@ -52,7 +52,7 @@
                 <% for (obj of file.data) { %>
                 <tr>
                   <!-- rendering data row wise -->
-                  <% for (let i = 0; i < length; i++) { %>
+                  <% for (let i = 0; i < headers.length; i++) { %>
                   <td><%= obj[headers[i]] %></td>
                   <% } %>
                 </tr>

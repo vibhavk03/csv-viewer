@@ -31,9 +31,14 @@ module.exports = {
   view: async function (req, res) {
     try {
       const file = await CSV.findById(req.params.id);
-      const headers = Object.keys(file.data[0]);
+      let headers;
+      /* handle empty csv file */
+      if (file.data.length === 0) {
+        headers = [];
+      } else {
+        headers = Object.keys(file.data[0]);
+      }
       res.render('fileView', {
-        length: headers.length,
         headers,
         file,
       });
