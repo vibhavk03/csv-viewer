@@ -14,7 +14,6 @@ module.exports = {
         try {
           await CSV.create({
             originalFileName: req.file.originalname,
-            uniqueFileName: req.file.filename,
             data: results,
           });
         } catch (error) {
