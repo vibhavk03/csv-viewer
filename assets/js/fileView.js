@@ -89,3 +89,83 @@ function sortTable(n) {
     dirIconDiv.innerHTML = '<i class="fa-solid fa-sort-up"></i>';
   }
 }
+
+const fileDataRaw = document.getElementById('file-data').getAttribute('data');
+const fileData = JSON.parse(fileDataRaw);
+const headers = Object.keys(fileData[0]);
+
+const searchBox = document.getElementById('search-table-box');
+searchBox.addEventListener('keyup', function (event) {
+  event.preventDefault();
+
+  /* get table headers in default position everytime this event occurs */
+  let table = document.getElementById('file-view-table');
+  let rows = table.rows;
+  for (let a = 0; a < rows[0].children.length; a++) {
+    let colm = rows[0].getElementsByTagName('TH')[a];
+    colm.classList.add('sort-asc');
+    colm.classList.remove('th-clicked');
+    let dirIconDiv = colm.children[0].children[0];
+    dirIconDiv.innerHTML = '';
+    dirIconDiv.innerHTML = '<i class="fa-solid fa-sort"></i>';
+  }
+
+  /* get search box input value */
+  let searchQueryLower = this.value.toLowerCase();
+  let searchQueryUpper = this.value.toUpperCase();
+
+  /* see if any row data includes search query */
+  let filteredData = fileData.filter((object) => {
+    for (let i = 0; i < headers.length; i++) {
+      if (
+        object[headers[i]].includes(searchQueryLower) ||
+        object[headers[i]].includes(searchQueryUpper)
+      ) {
+        return object;
+      }
+    }
+  });
+
+  /* clear table body rows */
+  let tableBody = document.querySelector('#file-view-table tbody');
+  tableBody.innerHTML = '';
+
+  /* populate table body rows with filtered data */
+  for (object of filteredData) {
+    let row = document.createElement('tr');
+    for (let i = 0; i < headers.length; i++) {
+      let td = document.createElement('td');
+      td.innerText = object[headers[i]];
+      row.appendChild(td);
+    }
+    tableBody.appendChild(row);
+  }
+});
+
+/* render all data when cross button is clicked in search bar for chrome browser */
+searchBox.addEventListener('search', () => {
+  /* get table headers in default position everytime this event occurs */
+  let table = document.getElementById('file-view-table');
+  let rows = table.rows;
+  for (let a = 0; a < rows[0].children.length; a++) {
+    let colm = rows[0].getElementsByTagName('TH')[a];
+    colm.classList.add('sort-asc');
+    colm.classList.remove('th-clicked');
+    let dirIconDiv = colm.children[0].children[0];
+    dirIconDiv.innerHTML = '';
+    dirIconDiv.innerHTML = '<i class="fa-solid fa-sort"></i>';
+  }
+
+  /* render all rows for file */
+  let tableBody = document.querySelector('#file-view-table tbody');
+  tableBody.innerHTML = '';
+  for (object of fileData) {
+    let row = document.createElement('tr');
+    for (let i = 0; i < headers.length; i++) {
+      let td = document.createElement('td');
+      td.innerText = object[headers[i]];
+      row.appendChild(td);
+    }
+    tableBody.appendChild(row);
+  }
+});
