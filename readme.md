@@ -26,17 +26,31 @@ Styling is done using vanilla CSS.
 To run this application in your local machine, please follow the below steps. Your machine should have MongoDB setup as this application uses MongoDB for database needs.
 
 1 - Clone the repository using the following command
+
+```
 git clone https://github.com/vibhavk03/csv-viewer.git
+```
 
 2 - Install the required dependencies using the following command
+
+```
 npm install
+```
 
 3 - Create a .env file and paste the following key-value into it
 MONGO_URI=mongodb://127.0.0.1:27017/csv_viewer_local
 
 3 - Start the application using the following command
+
+```
 npm run start
-npm run dev (to start using nodemon)
+```
+
+If want to start using nodemon run the following command
+
+```
+npm run dev
+```
 
 4 - Open the application in your web browser by going to the below URL
 http://localhost:3000/
