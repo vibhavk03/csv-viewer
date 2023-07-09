@@ -37,8 +37,11 @@ git clone https://github.com/vibhavk03/csv-viewer.git
 npm install
 ```
 
-3 - Create a .env file and paste the following key-value into it<br>
+3 - Create a .env file and paste the following key-value into it
+
+```
 MONGO_URI=mongodb://127.0.0.1:27017/csv_viewer_local
+```
 
 3 - Start the application using the following command
 
