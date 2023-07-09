@@ -37,7 +37,7 @@ git clone https://github.com/vibhavk03/csv-viewer.git
 npm install
 ```
 
-3 - Create a .env file and paste the following key-value into it
+3 - Create a .env file and paste the following key-value into it<br>
 MONGO_URI=mongodb://127.0.0.1:27017/csv_viewer_local
 
 3 - Start the application using the following command
@@ -52,5 +52,5 @@ If want to start using nodemon run the following command
 npm run dev
 ```
 
-4 - Open the application in your web browser by going to the below URL
+4 - Open the application in your web browser by going to the below URL<br>
 http://localhost:3000/
