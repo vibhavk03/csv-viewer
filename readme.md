@@ -6,9 +6,9 @@ Access this project live here --> https://gorgeous-coat-bat.cyclic.app/
 
 ![](assets/screenshots/file_view.JPG)
 
-This is a CSV reader application where you can upload a CSV file and get it's content displayed in a tabular format.
-When you view a file you have an option to search the table. The table would be filtered according to the search query.
-Clicking on any of the headers of the file you can sort the table in ascending or descending order.
+This is a CSV reader application where you can upload a CSV file and get it's content displayed in a tabular format.<br>
+When you view a file you have an option to search the table. The table would be filtered according to the search query.<br>
+Clicking on any of the headers of the file you can sort the table in ascending or descending order.<br>
 
 ![](assets/screenshots/file_search.JPG)
 
@@ -16,10 +16,10 @@ Clicking on any of the headers of the file you can sort the table in ascending o
 
 ## Tech Stack
 
-This project uses NodeJs for backend routing with EJS templating engine for frontend.
-Multer is used for assisting with file uploads and CSV Parser is used to parse the CSV files before storing to DB.
-For database configuration, this project uses MongoDB.
-Styling is done using vanilla CSS.
+This project uses NodeJs for backend routing with EJS templating engine for frontend.<br>
+Multer is used for assisting with file uploads and CSV Parser is used to parse the CSV files before storing to DB.<br>
+For database configuration, this project uses MongoDB.<br>
+Styling is done using vanilla CSS.<br>
 
 ## Local Machine Setup
 
@@ -52,5 +52,8 @@ If want to start using nodemon run the following command
 npm run dev
 ```
 
-4 - Open the application in your web browser by going to the below URL<br>
+4 - Open the application in your web browser by going to the below URL
+
+```
 http://localhost:3000/
+```
